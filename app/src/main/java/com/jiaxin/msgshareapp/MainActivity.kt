@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
 
             val intent= Intent(this,SecondActivity::class.java)//kotlin reflection
             startActivity(intent)
-            //
         }
     }
 }
