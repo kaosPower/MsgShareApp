@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
             val intent= Intent(this,SecondActivity::class.java)//kotlin reflection
             intent.putExtra("user_message",message)
             startActivity(intent)
-            //
 
         }
     }
