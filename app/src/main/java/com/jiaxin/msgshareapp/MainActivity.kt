@@ -49,5 +49,6 @@ class MainActivity : AppCompatActivity() {
             val intent=Intent(this,HobbiesActivity::class.java)
             startActivity(intent)
         }
+        //
     }
 }
