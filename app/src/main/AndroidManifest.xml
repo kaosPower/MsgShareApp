@@ -13,9 +13,11 @@
         android:theme="@style/Theme.MsgShareApp"
         tools:targetApi="31">
         <activity
-            android:name=".SecondActivity"
+            android:name=".HobbiesActivity"
             android:exported="false" />
-        <!--you have to declare a new activity in AndroidManifest.xml-->
+        <activity
+            android:name=".SecondActivity"
+            android:exported="false" /> <!-- you have to declare a new activity in AndroidManifest.xml -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
