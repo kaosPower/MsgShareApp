@@ -4,19 +4,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
+import com.jiaxin.msgshareapp.databinding.ActivitySecondBinding
 
 class SecondActivity : AppCompatActivity() {
+    lateinit var binding:ActivitySecondBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_second)
+        binding=ActivitySecondBinding.inflate(layoutInflater)
+        val view=binding.root
+        setContentView(view)
 
         val bundle: Bundle?=intent.extras
         val msg=bundle!!.getString("user_message")
 
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show()
 
-        val txvUserMessage=findViewById<TextView>(R.id.txvUserMessage)
-        txvUserMessage.text=msg
+        binding.txvUserMessage.text=msg
 
 
     }

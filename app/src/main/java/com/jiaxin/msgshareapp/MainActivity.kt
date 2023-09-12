@@ -4,25 +4,23 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
+import com.jiaxin.msgshareapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding:ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        val btnShowToast=findViewById<Button>(R.id.btnShowToast)
-        btnShowToast.setOnClickListener {
+        binding=ActivityMainBinding.inflate(layoutInflater)
+        val view=binding.root
+        setContentView(view)
+        binding.btnShowToast.setOnClickListener {
             Log.i("MainActivity","Button was clicked !")
             Toast.makeText(this,"Button was clicked !",Toast.LENGTH_SHORT).show()
         }
-        val btnSendMsgNextActivity=findViewById<Button>(R.id.btnSendMsgToNextActivity)
-        val etUserMessage=findViewById<EditText>(R.id.etUserMessage)
 
-        btnSendMsgNextActivity.setOnClickListener {
-            val message:String=etUserMessage.text.toString()
+        binding.btnSendMsgToNextActivity.setOnClickListener {
+            val message:String=binding.etUserMessage.text.toString()
             Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
 
             val intent= Intent(this,SecondActivity::class.java)//kotlin reflection
@@ -30,10 +28,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
-        val btnShareToOtherApps=findViewById<Button>(R.id.btnShareToOtherApps)
-        btnShareToOtherApps.setOnClickListener{
+        binding.btnShareToOtherApps.setOnClickListener{
 
-            val message:String=etUserMessage.text.toString()
+            val message:String=binding.etUserMessage.text.toString()
 
             val intent=Intent()
             intent.action=Intent.ACTION_SEND
@@ -43,8 +40,7 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(Intent.createChooser(intent,"Please select app  : "))
         }
-        val btnRecyclerViewDemo=findViewById<Button>(R.id.btnRecyclerViewDemo)
-        btnRecyclerViewDemo.setOnClickListener {
+         binding.btnRecyclerViewDemo.setOnClickListener {
             val intent=Intent(this,HobbiesActivity::class.java)
             startActivity(intent)
         }

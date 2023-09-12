@@ -4,10 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.list_item.view.*
 
 class HobbiesAdapter(val context: Context, val hobbies: List<Hobby>) : RecyclerView.Adapter<HobbiesAdapter.MyViewHolder> (){
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view=LayoutInflater.from(context).inflate(R.layout.list_item,parent,false)
         return MyViewHolder(view)
@@ -22,10 +23,12 @@ class HobbiesAdapter(val context: Context, val hobbies: List<Hobby>) : RecyclerV
         holder.setData(hobby,position)
     }
 
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class MyViewHolder( val itemView: View) : RecyclerView.ViewHolder(itemView){
         fun setData(hobby:Hobby?,pos:Int){
-            itemView.txvTitle.text=hobby!!.title
+            val txvTitle=itemView.findViewById<TextView>(R.id.txvTitle)
+            txvTitle.text=hobby!!.title
         }
+
     }
 
 
